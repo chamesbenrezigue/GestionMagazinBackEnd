@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -41,15 +43,15 @@ private Stock stock;
 @ManyToOne
 private Rayon rayon;
 
-@ManyToOne
-private detailFacture detailfacture;
+@OneToMany(cascade = CascadeType.ALL, mappedBy="produits")
+private Set<detailFacture> detailfacture;
 
-@OneToOne (mappedBy ="produit")
+@OneToOne 
 private DetailProduit detailProduit;
 
 
-@ManyToMany (mappedBy ="produits",fetch = FetchType.EAGER)
-private Collection<Fournisseur> fournisseurs=new ArrayList<>();
+@ManyToMany(cascade = CascadeType.ALL)
+private Set<Fournisseur> fournisseurs;
 
 public Produit() {
 	super();
@@ -103,11 +105,13 @@ public void setRayon(Rayon rayon) {
 	this.rayon = rayon;
 }
 
-public detailFacture getDetailfacture() {
+
+
+public Set<detailFacture> getDetailfacture() {
 	return detailfacture;
 }
 
-public void setDetailfacture(detailFacture detailfacture) {
+public void setDetailfacture(Set<detailFacture> detailfacture) {
 	this.detailfacture = detailfacture;
 }
 
@@ -120,11 +124,11 @@ public void setDetailProduit(DetailProduit detailProduit) {
 }
 
 
-public Collection<Fournisseur> getFournisseurs() {
+public Set<Fournisseur> getFournisseurs() {
 	return fournisseurs;
 }
 
-public void setFournisseurs(Collection<Fournisseur> fournisseurs) {
+public void setFournisseurs(Set<Fournisseur> fournisseurs) {
 	this.fournisseurs = fournisseurs;
 }
 

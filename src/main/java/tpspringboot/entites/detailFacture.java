@@ -34,8 +34,8 @@ public class detailFacture implements Serializable{
 	@Column (name ="montantRemise")
 	private float montantRemise;
 	
-	@OneToMany (mappedBy ="detailfacture")
-	private List<Produit> produits;
+	@ManyToOne 
+	private Produit produits;
 	
 	@ManyToOne
 	private Facture facture;
@@ -70,12 +70,22 @@ public class detailFacture implements Serializable{
 	}
 	
 
-	public List<Produit> getProduits() {
+
+
+	public Produit getProduits() {
 		return produits;
 	}
 
-	public void setProduits(List<Produit> produits) {
+	public void setProduits(Produit produits) {
 		this.produits = produits;
+	}
+
+	public Facture getFacture() {
+		return facture;
+	}
+
+	public void setFacture(Facture facture) {
+		this.facture = facture;
 	}
 
 	public float getPrixTotal() {

@@ -3,6 +3,7 @@ package tpspringboot.entites;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,18 +36,12 @@ public class Facture implements Serializable{
 	private boolean active;
 	
 	@OneToMany (mappedBy ="facture")
-	private List<detailFacture> detailfactures;
+	private Set<detailFacture> detailfactures;
 	
 	@ManyToOne
 	private Client client;
 	
-	public List<detailFacture> getDetailfactures() {
-		return detailfactures;
-	}
 
-	public void setDetailfactures(List<detailFacture> detailfactures) {
-		this.detailfactures = detailfactures;
-	}
 
 	public Facture() {
 		super();
@@ -70,6 +65,22 @@ public class Facture implements Serializable{
 
 	public float getMontantRemise() {
 		return montantRemise;
+	}
+
+	public Set<detailFacture> getDetailfactures() {
+		return detailfactures;
+	}
+
+	public void setDetailfactures(Set<detailFacture> detailfactures) {
+		this.detailfactures = detailfactures;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	public void setMontantRemise(float montantRemise) {

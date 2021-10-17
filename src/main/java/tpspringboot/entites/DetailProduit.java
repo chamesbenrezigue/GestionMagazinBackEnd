@@ -31,7 +31,7 @@ public class DetailProduit implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private categorieProduit categorieP;
 	
-	@OneToOne
+	@OneToOne(mappedBy ="detailProduit")
 	private Produit produit;
 	
 	

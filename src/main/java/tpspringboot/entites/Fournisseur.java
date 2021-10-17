@@ -29,9 +29,6 @@ public class Fournisseur implements Serializable{
 	@Column (name ="libelle")
 	private String libelle;
 	
-	@ManyToMany (fetch = FetchType.EAGER)
-	private Collection<Produit> produits=new ArrayList<>();
-
 	public Fournisseur() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -67,13 +64,6 @@ public class Fournisseur implements Serializable{
 		this.libelle = libelle;
 	}
 
-	public Collection<Produit> getProduits() {
-		return produits;
-	}
-
-	public void setProduits(Collection<Produit> produits) {
-		this.produits = produits;
-	}
 
 	@Override
 	public String toString() {
